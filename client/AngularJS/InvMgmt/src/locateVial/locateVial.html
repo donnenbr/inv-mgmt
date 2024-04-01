@@ -1,0 +1,36 @@
+<!-- align everything to the center.  really just effects the <p> and <button> at the end-->
+    <div class="main-panel">
+        <form [formGroup]="dataForm" (ngSubmit)="onSubmit()">
+            <table style="margin-left:auto;margin-right:auto; border-spacing:5px;">
+                <tr>
+                    <td class="formFieldLabel">
+                        <!-- <label works too-->
+                        <label for="locate-barcode">Vial Barcode (min {{MIN_BARCODE_LENGTH}} chars):</label></td>
+                    <td class="formField">
+                        <input type="text" formControlName="barcode" id="locate-barcode" required="y"
+                            minlength="{{MIN_BARCODE_LENGTH}}"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="formFieldLabel">
+                        <label for="locate-parentBarcode">Rack Barcode (min {{MIN_BARCODE_LENGTH}} chars):</label></td>
+                    <td class="formField">
+                        <input type="text" formControlName="parent_barcode" id="locate-parentBarcode" required="y"
+                            minlength="{{MIN_BARCODE_LENGTH}}"/>
+                    </td>
+                </tr><tr>
+                    <td class="formFieldLabel">
+                        <label for="locate-position">Position:</label></td>
+                    <td class="formField">
+                        <input type="text" formControlName="position" id="locate-position" required="y"/>
+                    </td>
+                </tr>
+            </table>
+            <p class="importantMessage">ALL Fields are required</p>
+            <!-- this disables the save button if the form is invalid, but we want to display the errors to the user
+                 instead of them wondering why the buuton is disabled.
+            <button type="submit" [disabled]="!dataForm.valid">Save It</button>
+            -->
+            <button class="normalButton" type="submit">Locate</button>
+        </form>
+    </div>

@@ -1,0 +1,113 @@
+.tabPanelButton {
+    background-color: rgb(49, 119, 248);
+    color: white;
+    font-size: 14pt;
+    font-weight: bold;
+    font-style: italic;
+    padding: 10px;
+    border-style: solid;
+    border-width: 0;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .tabPanelBlank {
+    margin:0px;
+    height:5px;
+    background-color:darkcyan;
+    border:none;
+  }
+
+  .formFieldLabel {
+    text-align: right;
+    font-weight: bold;
+  }
+
+  .formField {
+    text-align:left;
+  }
+
+  .tableFieldInput {
+    border: none;
+    border-bottom: 1px solid black;
+  }
+
+.no-spinners {
+    -moz-appearance: textfield;
+ }
+ 
+ .no-spinners::-webkit-outer-spin-button,
+ .no-spinners::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+ .main-panel {
+  text-align: center;
+  margin: 20px;
+}
+
+.normalButton {
+  color: white !important;
+  background-color: rgb(49, 119, 248);
+  border-radius: 5px;
+  font-size: 12pt;
+  font-weight: bold;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 20px;
+}
+.normalButton:disabled {
+  color: white;
+  background-color: rgb(185, 181, 181);
+}
+
+// for non-material tables
+.normal_th {
+  color: white;
+  background-color: rgb(49, 119, 248);
+  font-size: 12pt;
+  padding: 5px;
+  white-space: nowrap;
+}
+
+// material tables will pick this up, so the default is for material tables
+// originally had color and background reversed, but the sorting indicators are always gray
+// and were hard to see.  this is better than black on white
+th {
+  font-weight: bold;
+  font-size: 12pt;
+  font-style: italic;
+  white-space: nowrap;
+  color: rgb(49, 119, 248) !important;
+  background-color: white !important;
+  text-align: center;
+}
+td {
+  font-size: 12pt;
+  padding: 5px;
+  white-space: nowrap;
+  text-align: center;
+}
+caption {
+  color: darkcyan;
+  font-size: 16pt;
+  font-weight: bold;
+  font-style: italic;
+  text-align: left;
+}
+
+.dataTable:nth-child(even) {
+  background-color: rgb(171, 204, 253);
+}
+
+.importantMessage {
+  color: red;
+  font-size:16pt; 
+  font-weight:bold; 
+  font-style:italic;
+}

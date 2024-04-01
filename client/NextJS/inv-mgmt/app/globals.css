@@ -1,0 +1,234 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+Xbody {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+h1 {
+  color: black;
+  font-weight: bold;
+  font-size: 30pt;
+  padding: 10px;
+}
+
+h2 {
+  color: black;
+  font-weight: bold;
+  font-size: 24pt;
+  padding: 5px;
+}
+
+h3 {
+  color: black;
+  font-weight: bold;
+  font-size: 16pt;
+  padding: 3px;
+}
+
+button {
+  background-color: blue;
+  color: white;
+  padding: 10px;
+  margin: 10px;
+}
+
+/* from angular app */
+
+.tabPanelButton {
+  background-color: darkcyan;
+  color: white;
+  font-size: 14pt;
+  font-weight: bold;
+  font-style: italic;
+  margin: 0;
+  border-style: solid;
+  border-width: 0;
+  border-left-width: 1px;
+  border-right-width: 1px;
+  border-color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.tabPanelBlank {
+  height:5px;
+  background-color:darkcyan;
+  border: 0;
+}
+
+.formFieldLabel {
+  text-align: right;
+  font-weight: bold;
+}
+
+.formField {
+  text-align:left;
+}
+
+input[type=number],
+input[type=text] {
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+input[readonly] {
+  border: none;
+}
+
+.no-spinners {
+  -moz-appearance: textfield;
+}
+
+.no-spinners::-webkit-outer-spin-button,
+.no-spinners::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.main-panel {
+  text-align: center;
+  margin: 20px;
+  padding: 0px;
+}
+
+.normalButton {
+  color: white;
+  background-color: darkcyan;
+  border-radius: 5px;
+  border: 1px solid black;
+  font-size: 12pt;
+  font-weight: bold;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+.normalButton:disabled {
+  background-color: rgb(183, 185, 190);
+}
+
+table {
+  margin-left:auto;
+  margin-right:auto; 
+  border-spacing:5px;
+  border-collapse: separate;
+}
+
+th {
+  color: white;
+  background-color: darkcyan;
+  font-size: 12pt;
+  padding: 5px;
+  white-space: nowrap;
+}
+td {
+  font-size: 12pt;
+  padding: 5px;
+  white-space: nowrap;
+}
+
+caption {
+  color: darkcyan;
+  font-size: 16pt;
+  font-weight: bold;
+  font-style: italic;
+  text-align: left;
+}
+
+.containerTable {
+  margin:auto; 
+  width:600px; 
+  border:2px solid lightblue;
+}
+
+.containerTableRow:nth-child(even) {
+  background-color: #bbf7f2;
+}
+
+.requestTable {
+  margin:auto;
+  border:2px solid lightblue;
+}
+
+.pickListTable {
+  margin:auto; 
+  border:2px solid lightblue;
+}
+
+.pickListTableRow:nth-child(even) {
+  background-color: #bbf7f2;
+}
+.importantMessage {
+  color: red;
+  font-size:16pt; 
+  font-weight:bold; 
+  font-style:italic;
+}
+
+.buttonRow {
+  padding: 20px;
+}
+
+.spacerLarge {
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
+.spacerSmall {
+  margin-left: 1em;
+  margin-right: 1em;;
+}
+
+dialog {
+  border:5px solid darkcyan;
+  background-color:white; 
+  border-radius:20px;
+}
+dialog::backdrop {
+  background: hsla(0, 5%, 83%, 0.5);
+  backdrop-filter: blur(2px);
+}
+
+.dialogTitle {
+  color:red; 
+  font-size:16pt; 
+  font-weight:bold; 
+  font-style:italic
+}
+
+.myDialog {
+  z-index: 0;
+  border: 10px solid red;
+  position: absolute;
+  top: 200px;
+  left: 600px;
+  backdrop-filter: blur(2px);
+}
+

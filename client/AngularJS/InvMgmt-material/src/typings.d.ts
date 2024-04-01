@@ -1,0 +1,1 @@
+declare var my_class : any;

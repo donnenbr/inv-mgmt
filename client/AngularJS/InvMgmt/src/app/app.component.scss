@@ -1,0 +1,117 @@
+.tabPanelButton {
+    background-color: darkcyan;
+    color: white;
+    font-size: 14pt;
+    font-weight: bold;
+    font-style: italic;
+    padding: 10px;
+    border-style: solid;
+    border-width: 0;
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-color: white;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  .tabPanelBlank {
+    margin:0px;
+    height:5px;
+    background-color:darkcyan;
+    border:none;
+  }
+
+  .formFieldLabel {
+    text-align: right;
+    font-weight: bold;
+  }
+
+  .formField {
+    text-align:left;
+  }
+
+  input[type=number],
+  input[type=text] {
+    border: none;
+    border-bottom: 1px solid black;
+  }
+
+.no-spinners {
+    -moz-appearance: textfield;
+ }
+ 
+ .no-spinners::-webkit-outer-spin-button,
+ .no-spinners::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+ .main-panel {
+  text-align: center;
+  margin: 20px;
+}
+
+.normalButton {
+  color: white;
+  background-color: darkcyan;
+  border-radius: 5px;
+  font-size: 12pt;
+  font-weight: bold;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+th {
+  color: white;
+  background-color: darkcyan;
+  font-size: 12pt;
+  padding: 5px;
+  white-space: nowrap;
+}
+td {
+  font-size: 12pt;
+  padding: 5px;
+  white-space: nowrap;
+}
+caption {
+  color: darkcyan;
+  font-size: 16pt;
+  font-weight: bold;
+  font-style: italic;
+  text-align: left;
+}
+
+.dataTable:nth-child(even) {
+  background-color: #bbf7f2;
+}
+
+.importantMessage {
+  color: red;
+  font-size:16pt; 
+  font-weight:bold; 
+  font-style:italic;
+}
+
+.dialog {
+  border:5px solid darkcyan;
+  background-color:white; 
+  border-radius:20px;
+}
+
+.dialogTitle {
+  color:red; 
+  font-size:16pt; 
+  font-weight:bold; 
+  font-style:italic
+}
+
+h1 {
+  color: black;
+  font-weight: bold;
+  font-size: 30pt;
+  border: 1px solid red;
+}
+
+
+

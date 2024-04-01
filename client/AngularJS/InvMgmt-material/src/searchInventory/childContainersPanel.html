@@ -1,0 +1,57 @@
+<div style="text-align:center;" *ngIf="dataSource != null">
+    @if (dataSource.length < 1) {
+        <h1>There are no child containers</h1>
+    }
+    @else {
+        <div>
+            <h3>Click on a row to see the contents of that container</h3>
+        </div>
+        <div style="border: 2px solid blue; width: 600px; margin: auto;">
+        <!-- -->
+        <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
+            <ng-container matColumnDef="barcode">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Barcode</th>
+              <td mat-cell *matCellDef="let cntr">{{cntr.barcode ? cntr.barcode : 'EMPTY'}}</td>
+            </ng-container>
+            <ng-container matColumnDef="container_type">
+              <!-- no sort here as the types of the children should be the same for a given parent-->
+              <th mat-header-cell *matHeaderCellDef>Container Type</th>
+              <td mat-cell *matCellDef="let cntr">{{cntr.container_type}}</td>
+            </ng-container>
+            <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Position</th>
+                <td mat-cell *matCellDef="let cntr">{{cntr.position}}</td>
+            </ng-container>
+            <ng-container matColumnDef="reagent">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Reagent</th>
+                <td mat-cell *matCellDef="let cntr">{{cntr.reagent}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="_displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: _displayedColumns;" class="dataTable" (click)="tableRowClicked(row)"></tr>
+        </table>
+        <!-- -->
+        <!-- non-material way
+        <table style="width: 100%;">
+            <thead>
+                <tr>
+                    <th style="width:100px">Barcode</th>
+                    <th style="width:150px">Container Type</th>
+                    <th style="width:100px">Position</th>
+                    <th>Reagent</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="dataTable" *ngFor="let cont of _childContainers;" (click)="tableRowClicked(cont)">
+                    <td *ngIf="cont.barcode">{{cont.barcode}}</td>
+                    <td *ngIf="! cont.barcode">EMPTY</td>
+                    <td>{{cont.container_type}}</td>
+                    <td>{{cont.position}}</td>
+                    <td>{{cont.reagent}}</td>
+                </tr>
+            </tbody>
+        </table>
+        -->
+    </div>
+    }
+</div>

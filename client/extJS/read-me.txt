@@ -1,0 +1,4 @@
+Build the app for testing with
+	sencha app build testing
+then copy build/testing/InvMgmt to /var/www/html/InvMgmt-extjs
+Too many permission problems with public_dir and symlinks

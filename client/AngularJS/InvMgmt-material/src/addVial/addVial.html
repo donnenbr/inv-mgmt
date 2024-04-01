@@ -1,0 +1,64 @@
+<!-- align everything to the center.  really just effects the <p> and <button> at the end-->
+<div class="main-panel">
+    <form [formGroup]="dataForm" (ngSubmit)="onSubmit()">
+        <table style="margin-left:auto;margin-right:auto; border-spacing:5px;">
+            <tr>
+                <td>
+                    <mat-form-field hideRequiredMarker="true">
+                        <mat-label>Barcode</mat-label>
+                        <input matInput formControlName="barcode" id="addVial-barcode" required="y" 
+                            minlength="{{MIN_BARCODE_LENGTH}}"/>
+                        <mat-hint>Min {{MIN_BARCODE_LENGTH}} chars</mat-hint>
+                        @if (dataForm.controls.barcode.invalid) {
+                            <mat-error>{{getFieldErrors("Barcode",dataForm.controls.barcode)}}</mat-error>
+                        }
+                    </mat-form-field>
+                </td>
+                <td>
+                    <mat-form-field hideRequiredMarker="true">
+                        <mat-label>Lot Name</mat-label>
+                        <input matInput formControlName="lot" style="width:100%" required="y" />
+                        @if (dataForm.controls.lot.invalid) {
+                            <mat-error>{{getFieldErrors("Lot Name",dataForm.controls.lot)}}</mat-error>
+                        }
+                    </mat-form-field>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field hideRequiredMarker="true">
+                        <mat-label>Amount ({{AMOUNT_UNIT}})</mat-label>
+                        <input matInput type="number" class="no-spinners" min="{{MIN_AMOUNT}}" max="{{MAX_AMOUNT}}" 
+                            required="y" formControlName="amount"/>
+                        <mat-hint>Min {{MIN_AMOUNT}}, Max {{MAX_AMOUNT}}</mat-hint>
+                        @if (dataForm.controls.amount.invalid) {
+                            <mat-error>{{getFieldErrors("Amount",dataForm.controls.amount)}}</mat-error>
+                        }
+                    </mat-form-field>
+                    <input type="hidden" formControlName="amount_unit" value="{{AMOUNT_UNIT}}"/>
+                </td>
+                <td>
+                    <mat-form-field hideRequiredMarker="true">
+                        <mat-label>Concentration ({{CONCENTRATION_UNIT}})</mat-label>
+                        <input matInput type="number" class="no-spinners" min="{{MIN_CONCENTRATION}}" max="{{MAX_CONCENTRATION}}" 
+                            required="y" formControlName="concentration"/>
+                        <mat-hint>Min {{MIN_CONCENTRATION}}, Max {{MAX_CONCENTRATION}}</mat-hint>
+                        @if (dataForm.controls.concentration.invalid) {
+                            <mat-error>{{getFieldErrors("Concentration",dataForm.controls.concentration)}}</mat-error>
+                        }
+                        </mat-form-field>
+                    <input type="hidden" formControlName="concentration_unit" value="{{CONCENTRATION_UNIT}}"/>
+                </td>
+            </tr>
+        </table>
+        <p>
+            <span class="importantMessage">ALL Fields are required</span>
+        </p>
+        <p>
+            <!-- this disables the save button if the form is invalid, but we want to display the errors to the user
+                instead of them wondering why the buuton is disabled.
+            -->
+            <button matButton class="normalButton" type="submit" [disabled]="!dataForm.valid">Save It</button>
+        </p>
+    </form>
+</div>

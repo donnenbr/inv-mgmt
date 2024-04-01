@@ -1,0 +1,66 @@
+<div>
+    <form [formGroup]="dataForm" (ngSubmit)="searchByBarcode()">
+        <input type="hidden" formControlName="unit"/>
+        <input type="hidden" formControlName="concentration_unit"/>
+        <table style="margin-left:auto;margin-right:auto; border-spacing:5px;">
+            <tr>
+                <td class="formFieldLabel">
+                    <!-- <label works too-->
+                    <label for="search-barcode">Barcode:</label></td>
+                <td class="formField">
+                    <input type="text" formControlName="barcode" id="search-barcode" required="y"/>
+                </td>
+                <td style="width:10px"></td>
+                <td>
+                    <button class="normalButton" type="submit">Search</button>
+                </td>
+            </tr>
+            <tr>
+                <td class="formFieldLabel">
+                    <label for="search-container-type">Container Type:</label></td>
+                <td class="formField">
+                    <input type="text" readonly="y" formControlName="container_type" id="search-barcode"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="formFieldLabel">Location:</td>
+                <td class="formField">
+                    <input type="text" readonly="y" formControlName="position"/>
+                </td>
+            </tr>
+            <!-- including these fields here (instead of in another component) is the only way to ge them to line up
+                  with the barcode and container type fields because of the search button. -->
+            <tr [hidden]="!dataForm.value.reagent">
+                <td class="formFieldLabel">Reagent Name:</td>
+                <td class="formField">
+                    <input type="text" readonly="y" formControlName="reagent"/>
+                </td>
+            </tr>
+            <tr [hidden]="!dataForm.value.reagent">
+                <td class="formFieldLabel">Lot Name:</td>
+                <td class="formField">
+                    <input type="text" readonly="y" formControlName="lot"/>
+                </td>
+            </tr>
+            <tr [hidden]="!dataForm.value.reagent">
+                <td class="formFieldLabel">Amount ({{AMOUNT_UNIT}}):</td>
+                <td class="formField">
+                    <!-- this will allow floating point values through.  for now just enter integers.  -->
+                    <input type="number" class="no-spinners" min="{{MIN_AMOUNT}}" max="{{MAX_AMOUNT}}" 
+                        required="y" formControlName="amount"/>
+                </td>
+            </tr>
+            <tr [hidden]="!dataForm.value.reagent">
+                <td class="formFieldLabel">Concentration ({{CONCENTRATION_UNIT}}):</td>
+                <td class="formField">
+                    <input type="number" class="no-spinners" min="{{MIN_CONCENTRATION}}" max="{{MAX_CONCENTRATION}}" 
+                        required="y" formControlName="concentration"/>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <div [hidden]="!dataForm.value.reagent" style="padding:20px">
+        <button class="normalButton" style="margin-right:40px" (click)="updateContainer()">Update</button>
+        <button class="normalButton" style="margin-left:40px" (click)="deleteContainer()">Delete</button>
+    </div>
+</div>

@@ -1,0 +1,4 @@
+<div class="main-panel">
+    <pick-list-request [hidden]="!showRequest" (resultChange)="resultChanged($event)"/>
+    <pick-list-result [hidden]="showRequest" [resultData]="resultData" (returnToRequest)="displayRequestChanged($event)"/>
+</div>

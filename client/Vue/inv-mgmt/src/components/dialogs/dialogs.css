@@ -1,0 +1,14 @@
+/* styes explitiely for the dialogs.  we can take them out of the main css file */
+
+dialog {
+    border:5px solid var(--theme);
+    background-color:white; 
+    border-radius:20px;
+}
+  
+.dialogTitle {
+    color: red;
+    font-size:16pt; 
+    font-weight:bold; 
+    font-style:italic;
+}

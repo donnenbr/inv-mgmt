@@ -1,0 +1,33 @@
+
+<style>
+  
+</style>
+
+<main class="main">
+  <div class="content">
+    <div id="button-panel" style='text-align:center;'>
+      <button class="tabPanelButton" (click)="showPanel('add vial')">Add New Vial</button>
+      <button class="tabPanelButton" (click)="showPanel('search inventory')">Search Inventory</button>
+      <button class="tabPanelButton" (click)="showPanel('locate vial')">Locate Vial</button>
+      <button class="tabPanelButton" (click)="showPanel('pick list')">Pick List</button>
+    </div>
+    <hr class="tabPanelBlank"/>
+    <div id="main-panel">
+      <div [hidden]="selected_panel != 'add vial'">
+        <add-vial></add-vial>
+      </div>
+      <div [hidden]="selected_panel != 'search inventory'">
+        <search-inventory></search-inventory>
+      </div>
+      <div [hidden]="selected_panel != 'locate vial'">
+        <locate-vial></locate-vial>
+      </div>
+      <div [hidden]="selected_panel != 'pick list'">
+        <pick-list></pick-list>
+      </div>
+    </div>
+  </div>
+</main>
+
+
+<router-outlet></router-outlet>

@@ -1,0 +1,45 @@
+<!-- align everything to the center.  really just effects the <p> and <button> at the end-->
+<div class="main-panel">
+    <form [formGroup]="dataForm" (ngSubmit)="onSubmit()">
+        <table style="margin-left:auto;margin-right:auto; border-spacing:5px;">
+            <tr>
+                <td class="formFieldLabel">
+                    <!-- <label works too-->
+                    <label for="addvial-barcode">Barcode (min {{MIN_BARCODE_LENGTH}} chars):</label></td>
+                <td class="formField">
+                    <input type="text" formControlName="barcode" id="addVial-barcode" required="y" 
+                        minlength="{{MIN_BARCODE_LENGTH}}"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="formFieldLabel">Lot name:</td>
+                <td class="formField">
+                    <input type="text" formControlName="lot" style="width:100%" required="y" />
+                </td>
+            </tr>
+            <tr>
+                <td class="formFieldLabel">Amount ({{AMOUNT_UNIT}}):</td>
+                <td class="formField">
+                    <!-- this will allow floating point values through.  for now just enter integers.  -->
+                    <input type="number" class="no-spinners" min="{{MIN_AMOUNT}}" max="{{MAX_AMOUNT}}" 
+                        required="y" formControlName="amount"/>
+                    <input type="hidden" formControlName="amount_unit" value="{{AMOUNT_UNIT}}"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="formFieldLabel">Concentration ({{CONCENTRATION_UNIT}}):</td>
+                <td class="formField">
+                    <input type="number" class="no-spinners" min="{{MIN_CONCENTRATION}}" max="{{MAX_CONCENTRATION}}" 
+                        required="y" formControlName="concentration"/>
+                    <input type="hidden" formControlName="concentration_unit" value="{{CONCENTRATION_UNIT}}"/>
+                </td>
+            </tr>
+        </table>
+        <p class="importantMessage">ALL Fields are required</p>
+        <!-- this disables the save button if the form is invalid, but we want to display the errors to the user
+             instead of them wondering why the buuton is disabled.
+        <button type="submit" [disabled]="!dataForm.valid">Save It</button>
+        -->
+        <button class="normalButton" type="submit">Save It</button>
+    </form>
+</div>

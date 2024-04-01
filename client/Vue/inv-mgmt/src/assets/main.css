@@ -1,0 +1,202 @@
+@import './base.css';
+
+#app {
+  /* max-width: 1280px; */
+  margin: 0 auto;
+  padding: 1rem;
+  font-weight: normal;
+}
+
+a,
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+  padding: 3px;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    /*
+    display: flex;
+    place-items: center; 
+    */
+    margin: 0px;
+    padding: 0px;
+  }
+
+  /*
+  #app {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 2rem;
+  }
+  */
+}
+
+/*  bob stuff */
+
+.main-panel {
+  text-align: center;
+  margin: 20px;
+}
+
+.formFieldLabel {
+  text-align: right;
+  font-weight: bold;
+}
+
+.formField {
+  text-align:left;
+}
+
+input[type=number],
+input[type=text] {
+  border: none;
+  border-bottom: 1px solid black;
+}
+
+.no-spinners {
+  -moz-appearance: textfield;
+}
+
+.no-spinners::-webkit-outer-spin-button,
+.no-spinners::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.normalButton {
+  color: white;
+  background-color: var(--theme);
+  border-radius: 5px;
+  font-size: 12pt;
+  font-weight: bold;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.normalButton:disabled {
+  background-color: rgb(183, 185, 190);
+}
+
+/* 
+to be combined with normalButton to make the dialog buttons bigger
+*/
+.dialogButton {
+  font-size: 16pt;
+  font-weight: bold;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-right: 20px;
+  padding-left: 20px;
+
+}
+
+table {
+  margin-left:auto;
+  margin-right:auto; 
+  border-spacing:5px;
+  border-collapse: separate;
+}
+
+th {
+  color: white;
+  background-color: var(--theme);
+  font-size: 12pt;
+  padding: 5px;
+  white-space: nowrap;
+}
+
+td {
+  font-size: 12pt;
+  padding: 5px;
+  white-space: nowrap;
+}
+
+caption {
+  color: var(--theme);
+  font-size: 16pt;
+  font-weight: bold;
+  font-style: italic;
+  text-align: left;
+}
+
+.dataTable {
+  margin: auto;
+  border:2px solid lightblue;
+}
+
+/* this does not work as all rows are considered odd */
+.dataTableRow:nth-child(even) {
+  background-color: #bbf7f2;
+}
+
+/* use the index and manually set the class to this */
+.dataTableRow {
+  background-color: #bbf7f2;
+}
+
+/*
+.requestTable {
+  margin:auto;
+  border:2px solid lightblue;
+}
+
+.pickListTable {
+  margin:auto; 
+  border:2px solid lightblue;
+}
+
+.pickListTableRow {
+  background-color: #bbf7f2;
+}
+
+.pickListTableRow:nth-child(even) {
+  background-color: yellow;
+}
+
+.dataTable:nth-child(even) {
+  background-color: #bbf7f2;
+}
+*/
+
+.importantMessage {
+  color: red;
+  font-size:16pt; 
+  font-weight:bold; 
+  font-style:italic;
+}
+
+.buttonRow {
+  padding: 20px;
+}
+
+.spacerLarge {
+  margin-left: 3em;
+  margin-right: 3em;
+}
+
+.spacerMedium {
+  margin-left: 2em;
+  margin-right: 2em;
+}
+
+.spacerSmall {
+  margin-left: 1em;
+  margin-right: 1em;;
+}
+
+h1 {
+  color: var(--theme);
+  font-weight: bold;
+  font-size: 30pt;
+}

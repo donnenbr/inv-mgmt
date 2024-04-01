@@ -1,0 +1,5 @@
+<div class="main-panel">
+    <search-panel [selectedBarcode]="selectedBarcode" (containerChange)="containerChanged($event)"/>
+    <search-child-containers [displayedContainer]="displayedContainer" 
+        (containerSelected)="containerSelected($event)"/>
+</div>

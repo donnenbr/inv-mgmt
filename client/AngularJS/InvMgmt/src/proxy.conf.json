@@ -1,0 +1,47 @@
+{
+  "/django/service/invmgmt/": {
+    "comment": "django",
+    "comment2": "the logging does not work",
+    "target": "http://localhost:8000",
+    "secure": false,
+    "pathRewrite": {
+        "^/service/invmgmt/": "/invmgmt/"
+      },
+    "changeOrigin": true,
+    "logLevel": "verbose"
+  },
+  "/fastapi/service/invmgmt/": {
+    "comment": "fastAPI",
+    "target": "http://localhost:8000",
+    "secure": false,
+    "pathRewrite": {
+        "^/service/invmgmt/": ""
+      },
+    "changeOrigin": true,
+    "logLevel": "silly"
+  },
+  "/flask/service/invmgmt/": {
+    "comment": "flask",
+    "target": "http://localhost:5000",
+    "secure": false,
+    "pathRewrite": {
+        "^/service/invmgmt/": ""
+      },
+    "changeOrigin": true,
+    "logLevel": "verbose"
+  },
+  "/apache/service/invmgmt/": {
+    "comment": "apache",
+    "target": "http://localhost:80",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "silly"
+  },
+  "/service/invmgmt/": {
+     "comment": "apache",
+    "target": "http://localhost:80",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "silly"
+  }
+}

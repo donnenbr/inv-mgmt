@@ -1,0 +1,60 @@
+<div class="main-panel">
+    <div *ngIf="availableSamples != null && availableSamples.length < 1">
+        <h1>There are no available samples</h1>
+    </div>
+    <div [hidden]="!showAvailable" *ngIf="availableSamples != null && availableSamples.length > 0">
+        <table style="margin:auto; border:1px solid lightblue;">
+            <caption>Available Samples</caption>
+            <thead>
+                <tr>
+                    <th>Reagent</th>
+                    <th>Requested<br/>Amount (uL)</th>
+                    <th>Barcode</th>
+                    <th>Location</th>
+                    <th>Container<br/>Amount(uL)</th>
+                    <th>Conc. (uM)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rec of availableSamples" class="dataTable">
+                    <td>{{rec.reagent}}</td>
+                    <td>{{rec.requested_amount}}</td>
+                    <td>{{rec.barcode}}</td>
+                    <td>{{rec.position}}</td>
+                    <td>{{rec.amount}}</td>
+                    <td>{{rec.concentration}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div [hidden]="!showUnavailable" *ngIf="unavailableSamples != null && unavailableSamples.length > 0">
+        <!-- just some space -->
+        <br/>
+        <table style="margin:auto; border:1px solid lightblue;">
+            <caption>Unavailable Samples</caption>
+            <thead>
+                <tr>
+                    <th>Reagent</th>
+                    <th>Requested<br/>Amount (uL)</th>
+                    <th>Requested<br/>Conc. (uM)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let rec of unavailableSamples"class="dataTable">
+                    <td>{{rec.reagent}}</td>
+                    <td>{{rec.amount}}</td>
+                    <td>{{rec.concentration}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p>
+        <button class="normalButton" style="margin-right:20px; margin-left:20px" (click)="returnToRequestClicked()">Back To Request</button>
+        <!--you can only toggle avaialbel/unavailable if you have both-->
+        <span *ngIf="availableSamples != null && availableSamples.length > 0 && unavailableSamples != null && unavailableSamples.length > 0">
+            <button class="normalButton" style="margin-right:20px; margin-left:20px" (click)="toggleAvailableClicked()">Toggle Available</button>
+            <button class="normalButton" style="margin-right:20px; margin-left:20px" (click)="toggleUnavailableClicked()">Toggle Unavailable</button>
+        </span>
+    </p>
+</div>

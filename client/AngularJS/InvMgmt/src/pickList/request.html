@@ -1,0 +1,35 @@
+<div class="main-panel">
+    <!-- form must contain the form group.  or, that must be defined in a parent of where formArrayName is specified
+        can be in <table> or <tbody> -->
+    <form [formGroup]="dataForm" (ngSubmit)="doRequest()">
+        <table style="margin:auto; border:1px solid lightblue;" formArrayName="rows">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Reagent</th>
+                    <th>Amount uL</th>
+                    <th>Concentration uM</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- formGroupName is the index into "rows".  the idea is that angular will do formGroup.get(whatever) to
+                     get the control.  get can take a string for a name or int for an index.-->
+                <tr class="formTable" *ngFor="let fg of dataArray.controls; let idx=index;" formGroupName={{idx}}>
+                    <td>{{idx+1}}.</td>
+                    <td>
+                        <input type="text" formControlName="reagent"/>
+                    </td>
+                    <!-- note that the moin amd max values make the input smaller due to the number of digits.  looks funny, tho -->
+                    <td><input type="number" class="no-spinners" min="{{MIN_AMOUNT}}" 
+                        max="{{MAX_AMOUNT}}" formControlName="amount"/></td>
+                    <td><input type="number" class="no-spinners" min="{{MIN_CONCENTRATION}}" 
+                        max="{{MAX_CONCENTRATION}}" formControlName="concentration"/></td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="importantMessage">For any line, all fields are required</p>
+        <p>
+            <button class="normalButton" type="submit">Request</button>
+        </p>
+    </form>
+</div>

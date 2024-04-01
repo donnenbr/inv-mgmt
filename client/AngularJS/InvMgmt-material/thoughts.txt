@@ -1,0 +1,33 @@
+This version uses the Material components from angular.  It was not finished (pick list is not done).
+Just enough was done to get e feel for what they look like.
+
+What I liked:
+- the Tab Panel was easy to use and I didn't have to use javascript to make the panels sjow or hide.
+  It just worked.  The UI wasn't easy of able to change from the default, tho.
+- The input fields (text/number) can show hints and error messages beneath the field, and the field is 
+  highlighted in red if there is an error.  This is kind of cool.
+  
+What I didn't like:
+- This makes the input fields take up much more vertical space because they need the blank space for the 
+  hint and error messages.  Hint space maybe isn't used if there is no hint?
+- The table cells ere entirely too big.
+- There is a sorted table but it was rather cubmersom to use.  Also, the sort direction arrows are always grey
+  with no apparent way to change that.  That means the column headings must remain black chars on a white
+  background.  It would have been preferable to make the headings white chars on a blue-ish background to 
+  match the rest of the UI.  I think I can do something better with simple javascript and click handlers on the
+  table columns. BUUTTTT - what about updating the table when the data changes?????  The material stuff used a
+  DataSource to wrap the data and the table used that.  Maybe use the typical parent/child approach where 
+  the parent is just a <div> which wraps the child which is a real template like <sorted-table>.  the parent
+  holds the data and passes it to the child like we already do.  the child emits to the parent when a column is
+  chosen for sort.  the parent does the sort and passes the sorted data to trhe child.  Should work.  
+  
+ There is a dialog UI component.  Haven't tried it but could in the Pick List, where it makes the most sense 
+ because there is line level validation, not field level.
+ 
+ 12/13/2023 - we have a nice dialog and it replaces most of the alert() calls except for things like invalid
+ responses from the backens.  app-utils.ts now has an AppUtils class which encapsulates the formerly exported
+ methods because it needs access to a "dialog" property which is injected.  the idea is a simple showCommonDialog()
+ call from any component.  they must inject AppUtils.  don't know if that cpuld be done in a base class.  doubtful.
+ 
+ TODO - replac e all *ngFor and *ngIf with tyhe "modern "@for, @if directives.  DONE!!!
+ 

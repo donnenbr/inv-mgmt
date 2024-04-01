@@ -1,0 +1,40 @@
+
+<style>
+  
+</style>
+
+<main class="main">
+  <div class="content">
+    <div id="button-panel" style='text-align:center;'>
+      <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center" animationDuration="0ms">
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <span class="tabPanelButton">Add New Vial</span>
+          </ng-template>
+          <add-vial></add-vial>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <span class="tabPanelButton">Search Inventory</span>
+          </ng-template>
+          <search-inventory></search-inventory>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <span class="tabPanelButton">Locate Vial</span>
+          </ng-template>
+          <locate-vial></locate-vial>
+        </mat-tab>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <span class="tabPanelButton">Pick List</span>
+          </ng-template>
+          <pick-list></pick-list>
+        </mat-tab>
+      </mat-tab-group>
+    </div>
+  </div>
+</main>
+
+
+<router-outlet></router-outlet>

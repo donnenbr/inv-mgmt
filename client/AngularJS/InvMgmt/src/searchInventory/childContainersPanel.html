@@ -1,0 +1,28 @@
+<div style="text-align:center" *ngIf="_childContainers != null">
+    <div *ngIf="_childContainers.length < 1">
+        <h1>There are no child containers</h1>
+    </div>    
+    <div *ngIf="_childContainers.length >= 1">
+        <h3>Click on a row to see the contents of that container</h3>
+        <table style="margin:auto; width:600px; border:1px solid lightblue;">
+            <thead>
+                <tr>
+                    <th style="width:100px">Barcode</th>
+                    <th style="width:150px">Container Type</th>
+                    <th style="width:100px">Position</th>
+                    <th>Reagent</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- could also have the click event attached to the barcode column -->
+                <tr class="dataTable" *ngFor="let cont of _childContainers;" (click)="tableRowClicked(cont.barcode)">
+                    <td *ngIf="cont.barcode">{{cont.barcode}}</td>
+                    <td *ngIf="! cont.barcode">EMPTY</td>
+                    <td>{{cont.container_type}}</td>
+                    <td>{{cont.position}}</td>
+                    <td>{{cont.reagent}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>    
+</div>

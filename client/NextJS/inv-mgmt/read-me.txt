@@ -1,0 +1,4 @@
+PlainModal simply does NOT work, so we are still using alert() and confirm().
+Maybe try the react dialog stuff seen online at https://blog.logrocket.com/creating-reusable-pop-up-modal-react/#what-modal-dialog
+or just use the built in dialogs in a bootstrap version.
+
