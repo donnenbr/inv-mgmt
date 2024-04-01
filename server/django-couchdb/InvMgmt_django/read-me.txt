@@ -1,0 +1,15 @@
+Csrf support is enabled BUT you have to execute localhost:800/admin to get the cookie.  you don't need to do the
+admin login, just bring the page up.  when using curl, do the same thing with
+    curl -L -c cookie.txt  http://localhost:8000/admin
+and pull the value from cookie.txt.
+
+Invoking http://localhost:8000/invmgmt/container/1 won't do the trick.  must have something to do with
+rendering the admin page.  Note that unless you zap the cookie from the browser, it has a lifetime of
+1 year, so you don't have to invoke the admin page every time.
+
+Screw CSRF.  It makes sense for public facing apps, but not rest apis since they would almost NEVER be
+publically accessible.  Anyway, it does not give you the kind of security you probably want: reader,
+writer, admin.  SOOOOOOOOOOOO, it's disabled.
+
+There's an example of accessing data from multiple dbs at the end of the models module.  there is a second db
+setup with 5 "characteristics" - integer values mimicking attributes in RDSS, based on reagent name.
