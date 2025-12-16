@@ -1,3 +1,9 @@
+#######################################################################################
+#
+# used to decode and validate the data posted up from the web forms
+#
+#######################################################################################
+
 from marshmallow import Schema, fields, validate
 # from collections import namedtuple
 from dataclasses import make_dataclass
@@ -10,7 +16,7 @@ MAX_AMOUNT = 750
 MIN_CONCENTRATION = 0.1
 MAX_CONCENTRATION = 100.0
 
-# the base schema with minimal functionalit
+# the base schema with minimal functionality
 class Base_schema(Schema):
     def __init__(self, *args, **kwargs):
         Schema.__init__(self, *args, **kwargs)
@@ -59,7 +65,8 @@ class SampleContainer_schema(Base_schema):
     def __init__(self, *args, **kwargs):
         Base_schema.__init__(self, *args, **kwargs)
 
-    id = fields.Int()
+    # id not required for when we add a new vial.
+    id = fields.Int(load_default=None)
     barcode = fields.String(required=True, validate=validate.Length(min=MIN_BARCODE_LENGTH))
     reagent = fields.String()
     lot_id = fields.Integer()

@@ -1,7 +1,11 @@
 from typing import Any
 from sqlalchemy import func
 
-from ma_models import *
+import sqlalchemy.dialects as dialects
+
+from datetime import datetime
+
+from .ma_models import *
 
 class ApplicationException(Exception):
     def __init__(self, message: Any):
@@ -16,8 +20,8 @@ def get_container_types() -> dict:
     dump_data = ct_schema.dump(ct_list, many=True)
     return dump_data
 
-def get_lots() -> dict:
-    lot_list = db.session.query(Lot).limit(20).all()
+def get_lots(limit:int = 20) -> dict:
+    lot_list = db.session.query(Lot).limit(limit).all()
     lot_schema = Lot_schema()
     dump_data = lot_schema.dump(lot_list, many=True)
     return dump_data
@@ -91,8 +95,8 @@ def get_container_by_barcode(barcode:str) -> dict|None:
     cntr = cntr_list[0]
     return _mk_container_info(cntr)
 
-def get_container(cntr_id) -> dict|None:
-    cntr = db.session.query(Container).get(cntr_id)
+def get_container(cntr_id:int) -> dict|None:
+    cntr = db.session.query(Container).get(int(cntr_id))
     if (cntr is not None):
         return _mk_container_info(cntr)
     return None
@@ -120,9 +124,13 @@ def add_container(model: Any):
     cont.concentration = model.concentration
     cont.concentration_unit = model.concentration_unit
     db.session.add(cont)
+    # this fails under the jdbc bridge as there is no method to get the last id.
+    # maybe just pull it back by barcode??????
+    # if we don't explitely flush, commit does anyway!!!
     db.session.flush()
     db.session.commit()
     db.session.refresh(cont)
+    print(f"*** cont id {cont.id}")
     # the cont object should now have it's db id.  just put it back
     return _mk_container_info(cont)
 
@@ -152,7 +160,7 @@ def update_container(model: Any):
     return _mk_container_info(cont)
 
 def delete_container(container_id:int):
-    cont = db.session.query(Container).get(container_id)
+    cont = db.session.query(Container).get(int(container_id))
     if cont is None:
         return None
     # must be a vial
@@ -203,6 +211,7 @@ def locate_container(model: Any):
     return _mk_container_info(cont)
 
 def generate_pick_list(models:[Any]):
+    t1 = datetime.now()
     # validate the inputs
     errors = []
     # each reagent must exist
@@ -237,6 +246,9 @@ def generate_pick_list(models:[Any]):
             available_inventory.append(d)
         else:
             unavailable_reagents.append(rec)
-
+            
+    t2 = datetime.now()
+    print(f"*** time {t2-t1}")
+    
     return {"available": available_inventory, "unavailable": unavailable_reagents}
 

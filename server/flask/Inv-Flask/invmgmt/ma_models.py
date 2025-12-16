@@ -1,8 +1,15 @@
-# from marshmallow import fields, ValidationError
+#######################################################################################
+#
+# used to convert the models to json for return to web front end.  really just used
+# for testing as custom serializers are used to return data for containers and their
+# contents (child containers or sample).
+#
+#######################################################################################
+
 from marshmallow_sqlalchemy import SQLAlchemySchema, auto_field, fields
 from marshmallow import post_dump, pre_dump
 
-from models import *
+from .models import *
 
 class ContainerType_schema(SQLAlchemySchema):
     class Meta:
