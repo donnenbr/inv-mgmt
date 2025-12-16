@@ -1,0 +1,196 @@
+/* constants */
+* {
+	-fx-button-background-color: DarkCyan;
+	-fx-button-text-color: white;
+	/* not so light it looks disabled */
+	-fx-tab-background-color: #40a8a8;
+	-fx-tab-text-color: black;
+}
+
+.label { 
+	-fx-font-size: 12pt;
+}
+
+.title {
+	-fx-font-size: 16pt;
+	-fx-font-weight: bold;
+}
+
+.important-message {
+	-fx-font-size: 20pt;
+	-fx-font-style: italic;
+	-fx-font-weight: bold;
+}
+
+.error-message {
+	-fx-font-size: 16pt;
+	-fx-font-style: italic;
+	-fx-font-weight: bold;
+	-fx-text-fill: red;
+}
+
+.text-field {
+	-fx-font-size: 12pt;
+}
+
+.error-field {
+	-fx-border-color: red;
+	-fx-focus-color: red;
+	-fx-background-color: #ffbfbf;
+}
+
+.button {
+	-fx-background-color: DarkCyan;
+	-fx-font-size: 16pt;
+	-fx-font-weight: bold;
+	-fx-text-fill: white;
+	-fx-border-radius: 10px; /* Rounded corners of BORDER*/
+    -fx-background-radius: 10px; /* Rounded corners on background */
+    -fx-padding: 5px 15px 5px 15px;
+}
+
+.button:focused, .text-field:focused, .combo-box:focused {
+	-fx-border-color: blue;
+    -fx-border-width: 1px;
+    /* gets rid of the highlight applied when the element is focused.  we could just set them to the color we want
+       but they are TOO FAT!!! */
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+.text-field:focused {
+	/* a nice soft light yellow.  so calming!!! */
+	-fx-background-color: #fcfce0;
+}
+
+.small-button {
+	-fx-font-size: 10pt;
+	-fx-border-radius: 6px; /* Rounded corners of BORDER*/
+    -fx-background-radius: 6px; /* Rounded corners on background */
+    -fx-padding: 3px 10px 3px 10px;
+}
+
+/* both color values make it look solid. */
+.separator {
+	-fx-text-box-border: blue;
+	-fx-background-color: blue;
+	-fx-shadow-highlight-color: transparent;
+	-fx-min-height: 2;
+}
+
+.grid {
+    -fx-hgap: 10;
+    -fx-vgap:10;
+    -fx-alignment: BASELINE_CENTER;
+}
+
+.grid-border {
+    -fx-border-color: blue;
+    -fx-border-width: 1px;
+    -fx-border-style: solid;
+    -fx-padding: 10;
+}
+
+/* this makes the column headers appear as one solid bar */
+/*
+.table-view .column-header {
+	-fx-background-color: darkcyan;
+}
+*/
+
+/* this makes them have a small border */
+.table-view .column-header .label {
+	-fx-background-color: DarkCyan;
+	-fx-text-fill: white;
+}
+
+/*  seems to work fine.  would like more space between the tabs, but seems impossible without 
+    using the border to do that.  padding and insets does not work. we'd want the border to be transparent
+    but there seems to be no way to change the background color of the label within the tab when the tab
+    is selected. */
+
+.tab {
+	-fx-background-color: -fx-tab-background-color;
+	-fx-padding: 5 15 5 15;
+	-fx-background-radius: 10 10 0 0;
+	-fx-border-radius: 10 10 0 0;
+	
+	/* gets us close to having some space between the tabs but there are still some "artifacts" in the
+	   upper right and left corners of the border. */
+	   /*
+	-fx-border-color: #e5e5e5;
+	-fx-border-width: 2 3 2 3;
+	-fx-border-style: solid;
+	-fx-border-radius: 10 10 0 0;
+	*/
+}
+.tab:selected {
+	-fx-background-color: -fx-button-background-color;
+	-fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.tab-label {
+	-fx-background-color: inherit;
+	-fx-text-fill: -fx-button-text-color;
+	-fx-font-size: 12pt;
+	/* -fx-background-radius: 10 10 0 0; */
+}
+
+/* */
+
+/*------ copied off the internet, then tweaked ------*/
+
+/*
+.tab-header-area .tab-header-background {
+ 	-fx-background-color: -fx-tab-background-color;
+}
+*/
+/*
+.tab-pane {
+	-fx-background-color: transparent;
+	-fx-text-fill: -fx-button-text-color;
+	-fx-background-insets: 0 0 0 0;
+	-fx-background-radius: 8 8 0 0;
+}
+.tab:selected {
+	-fx-background-color: -fx-button-background-color;
+	-fx-text-fill: -fx-button-text-color;
+	-fx-background-insets: 0 0 0 0;
+	-fx-background-radius: 8 8 0 0;
+	-fx-border-color: blue;
+}
+.tab .tab-label { 
+	-fx-background-color: -fx-tab-background-color;
+	-fx-text-fill: -fx-button-text-color;
+ 	-fx-alignment: CENTER;
+	-fx-font-size: 12pt;
+	X-fx-padding: 0 10 0 10;
+	-fx-padding: 5;
+	-fx-background-insets: 0 0 0 0;
+	-fx-background-radius: 8 8 0 0;
+}
+.tab-label:selected {
+	-fx-background-color: -fx-button-background-color;
+	-fx-text-fill: -fx-button-text-color;
+	-fx-background-insets: 0 0 0 0;
+	-fx-background-radius: 8 8 0 0;
+}
+.tab-pane:top *.tab-header-area {
+	X-fx-padding: 0 0 0 30;
+}
+.tab-pane {
+	-fx-background-color: transparent;
+	X-fx-tab-min-width: 100px;
+	-fx-tab-min-height: 30px;
+	-fx-tab-max-height: 30px;
+}
+.tab-pane .tab {
+	-fx-background-color: transparent;
+}
+
+.tab-pane:focused .tab-header-area .headers-region .focus-indicator {
+ 	-fx-border-width: 0;
+	-fx-border-insets: 0 0 0 0;
+	-fx-border-radius: 0;
+}
+*/
